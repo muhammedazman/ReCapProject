@@ -11,16 +11,16 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            InMemoryCarDal inMemoryCarDal = new InMemoryCarDal();
-            InMemoryBrandDal inMemoryBrandDal = new InMemoryBrandDal();
-            InMemoryColorDal inMemoryColorDal = new InMemoryColorDal();
+            ICarDal inMemoryCarDal = new InMemoryCarDal();
+            IBrandDal inMemoryBrandDal = new InMemoryBrandDal();
+            IColorDal inMemoryColorDal = new InMemoryColorDal();
 
             CarManager carManager = new CarManager(inMemoryCarDal, inMemoryBrandDal, inMemoryColorDal);
             List<Car> cars = carManager.GetAll();
 
             foreach (var car in cars)
             {
-                Console.Write(car.CarId+" -- "+ inMemoryBrandDal.GetBrandName(car.BrandId) + " -- " + inMemoryColorDal.GetColorName(car.ColorId) + "\n");
+                Console.Write(car.CarId+" | "+ carManager.GetBrandName(car.BrandId) + " | " + carManager.GetColorName(car.ColorId) + "\n");
             }
         }
     }

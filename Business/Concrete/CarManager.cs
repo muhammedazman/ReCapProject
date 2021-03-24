@@ -13,15 +13,6 @@ namespace Business.Concrete
         IBrandDal _brandDal;
         IColorDal _colorDal;
 
-        public CarManager(ICarDal carDal)
-        {
-            _carDal = carDal;
-        }
-        public CarManager(ICarDal carDal, IBrandDal brandDal)
-        {
-            _brandDal = brandDal;
-            _carDal = carDal;
-        }
         public CarManager(ICarDal carDal, IBrandDal brandDal, IColorDal colorDal)
         {
             _colorDal = colorDal;
@@ -32,6 +23,16 @@ namespace Business.Concrete
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
+        }
+
+        public string GetBrandName(int brandId)
+        {
+            return _brandDal.GetBrandName(brandId);
+        }
+
+        public string GetColorName(int colorId)
+        {
+            return _colorDal.GetColorName(colorId);
         }
     }
 }
