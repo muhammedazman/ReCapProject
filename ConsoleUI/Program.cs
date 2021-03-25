@@ -15,7 +15,7 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
 
             foreach (var car in carManager.GetByDailyPrice(2000, 15000)) { 
-                Console.WriteLine("{0} {1} {2}", car.CarId, car.BrandId, car.DailyPrice);
+                Console.WriteLine("{0} {1} {2} {3}", car.CarId, car.BrandName, car.ColorName, car.DailyPrice);
             }
         }
     }

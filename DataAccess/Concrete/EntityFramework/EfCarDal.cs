@@ -43,10 +43,9 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (RecapContext context = new RecapContext())
             {
-                return filter == null
+                return (filter == null)
                     ? context.Set<Car>().ToList()
                     : context.Set<Car>().Where(filter).ToList();
-
             }
         }
 
