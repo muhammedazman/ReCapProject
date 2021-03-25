@@ -10,13 +10,9 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
-        IBrandDal _brandDal;
-        IColorDal _colorDal;
 
-        public CarManager(ICarDal carDal, IBrandDal brandDal, IColorDal colorDal)
+        public CarManager(ICarDal carDal)
         {
-            _colorDal = colorDal;
-            _brandDal = brandDal;
             _carDal = carDal;
         }
 
@@ -25,14 +21,14 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public string GetBrandName(int brandId)
+        public List<Car> GetAllByBrand(int brandId)
         {
-            return _brandDal.GetBrandName(brandId);
+            return _carDal.GetAll(p=>p.BrandId==brandId);
         }
 
-        public string GetColorName(int colorId)
+        public List<Car> GetByDailyPrice(decimal min, decimal max)
         {
-            return _colorDal.GetColorName(colorId);
+            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
         }
     }
 }
