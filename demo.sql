@@ -1,4 +1,4 @@
-﻿/*CREATE TABLE [dbo].[Car]
+﻿/*CREATE TABLE [dbo].[Cars]
 (
 	[CarId] INT NOT NULL PRIMARY KEY, 
     [BrandId] INT NOT NULL, 
@@ -20,31 +20,31 @@ CREATE TABLE [dbo].[Color]
     [ColorName] NVARCHAR(100) NOT NULL
 );*/
 /*
-INSERT INTO [dbo].[Car] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
+INSERT INTO [dbo].[Cars] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
 VALUES (1,1,1,2019,21000,'Yeni gibi');
 
-INSERT INTO [dbo].[Car] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
+INSERT INTO [dbo].[Cars] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
 VALUES (2,7,3,2020,1800,'Hasarli');
 
-INSERT INTO [dbo].[Car] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
+INSERT INTO [dbo].[Cars] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
 VALUES (3,2,5,2001,1000,'Uzun yol araci');
 
-INSERT INTO [dbo].[Car] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
+INSERT INTO [dbo].[Cars] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
 VALUES (4,4,7,2008,10000, 'taksi');
 
-INSERT INTO [dbo].[Car] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
+INSERT INTO [dbo].[Cars] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
 VALUES (5,3,2,2007,8000, 'tamir gormus');
 
-INSERT INTO [dbo].[Car] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
+INSERT INTO [dbo].[Cars] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
 VALUES (6,3,4,2006,5000, 'taksi');
 
-INSERT INTO [dbo].[Car] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
+INSERT INTO [dbo].[Cars] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
 VALUES (7,4,6,2005,15000, 'ic dekorasyon');
 
-INSERT INTO [dbo].[Car] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
+INSERT INTO [dbo].[Cars] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
 VALUES (8,5,8,2021,50000, 'sifir');
 
-INSERT INTO [dbo].[Car] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
+INSERT INTO [dbo].[Cars] ([CarId], [BrandId],[ColorId],[ModelYear],[DailyPrice],[Description])
 VALUES (9,6,9,2021,45000, 'sifir gibi');
 */
  insert into [dbo].[Brand] (BrandId, BrandName) values (1, 'Audi');
