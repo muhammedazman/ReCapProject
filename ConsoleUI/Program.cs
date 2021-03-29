@@ -16,16 +16,37 @@ namespace ConsoleUI
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            /*
-            carManager.Update(new Car {
-                CarId=7, 
-                BrandId=2, 
-                ColorId=1,
-                DailyPrice=2000,
-                Description="20210326-Update Transaction"
-            });
-            */
 
+            //CarUpdateTest(carManager);
+            //CarAddTest(carManager, brandManager, colorManager);
+            //CarSelectTest(carManager, brandManager, colorManager);
+
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine("{0} {1} {2} {3} {4} {5}",
+                    car.CarId,
+                    car.BrandName,
+                    car.ColorName,
+                    car.DailyPrice,
+                    car.ModelYear,
+                    car.Description);
+            }
+        }
+
+        private static void CarUpdateTest(CarManager carManager)
+        {
+            carManager.Update(new Car
+            {
+                CarId = 7,
+                BrandId = 2,
+                ColorId = 1,
+                DailyPrice = 2000,
+                Description = "20210326-Update Transaction"
+            });
+        }
+
+        private static void CarAddTest(CarManager carManager, BrandManager brandManager, ColorManager colorManager)
+        {
             carManager.Add(new Car
             {
                 BrandId = 3,
@@ -33,10 +54,15 @@ namespace ConsoleUI
                 DailyPrice = 21000,
                 Description = "20210326-Add Transaction"
             });
-            foreach (var car in carManager.GetAll()) { 
-                Console.WriteLine("{0} {1} {2} {3}", 
-                    car.CarId, 
-                    brandManager.GetById(car.BrandId).BrandName, 
+        }
+
+        private static void CarSelectTest(CarManager carManager, BrandManager brandManager, ColorManager colorManager)
+        {
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine("{0} {1} {2} {3}",
+                    car.CarId,
+                    brandManager.GetById(car.BrandId).BrandName,
                     colorManager.GetById(car.ColorId).ColorName,
                     car.DailyPrice);
             }

@@ -1,6 +1,7 @@
 ﻿using Business.Abstracts;
 using DataAccess.Abstracts;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -63,6 +64,11 @@ namespace Business.Concrete
             {
                 Console.WriteLine("ERROR: Daily Price have to 0 than bigger");
             }
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
     }
 }

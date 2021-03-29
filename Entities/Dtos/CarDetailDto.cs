@@ -1,22 +1,21 @@
-﻿using Core.Entities;
+﻿using Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entities.Concrete
+namespace Entities.Dtos
 {
-    public class Car : IEntity
+    public class CarDetailDto:IDto
     {
         private decimal _dailyPriceFormat;
-            
 
         public int CarId { get; set; }
-        public int BrandId { get; set; }
-        public int ColorId { get; set; }
+        public string BrandName { get; set; }
+        public string ColorName { get; set; }
         public short ModelYear { get; set; }
         public decimal DailyPrice
-        { 
-            get { return _dailyPriceFormat; } 
+        {
+            get { return _dailyPriceFormat; }
             set { _dailyPriceFormat = Convert.ToDecimal(string.Format("{0:#.00}", Convert.ToDecimal(value))); }
         }
 
