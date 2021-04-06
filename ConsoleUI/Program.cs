@@ -21,7 +21,7 @@ namespace ConsoleUI
             //CarAddTest(carManager, brandManager, colorManager);
             //CarSelectTest(carManager, brandManager, colorManager);
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine("{0} {1} {2} {3} {4} {5}",
                     car.CarId,
@@ -40,6 +40,7 @@ namespace ConsoleUI
                 CarId = 7,
                 BrandId = 2,
                 ColorId = 1,
+                ModelYear = 2009,
                 DailyPrice = 2000,
                 Description = "20210326-Update Transaction"
             });
@@ -52,18 +53,20 @@ namespace ConsoleUI
                 BrandId = 3,
                 ColorId = 3,
                 DailyPrice = 21000,
+                ModelYear = 2010,
                 Description = "20210326-Add Transaction"
             });
         }
 
         private static void CarSelectTest(CarManager carManager, BrandManager brandManager, ColorManager colorManager)
         {
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine("{0} {1} {2} {3}",
                     car.CarId,
                     brandManager.GetById(car.BrandId).BrandName,
                     colorManager.GetById(car.ColorId).ColorName,
+                    car.ModelYear,
                     car.DailyPrice);
             }
         }
