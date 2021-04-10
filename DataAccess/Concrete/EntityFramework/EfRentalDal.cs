@@ -2,10 +2,8 @@
 using DataAccess.Abstracts;
 using Entities.Concrete;
 using Entities.Dtos;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -15,10 +13,25 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (RecapContext context = new RecapContext())
             {
-                
+
+                var result = from r in context.Rentals
+                             join c in context.Cars on r.CarId equals c.CarId
+                             join cus in context.Customers on r.CustomerId equals cus.CustomerId
+                             select (new RentalDetailDto { 
+                                    RentalId = r.RentalId,
+                                    CustomerId = r.CustomerId,
+                                    CarId = r.CarId,
+                                    RentDate = r.RentDate,
+                                    ReturnDate = r.ReturnDate,
+                                    DailyPrice = c.DailyPrice,
+                                    ModelYear = c.ModelYear,
+                                    Description = c.Description,
+                                    CustomerName = cus.CustomerName,
+                                    Address = cus.Address
+                             });
 
 
-                return null;
+                return result.ToList();
             }
         }
     }
