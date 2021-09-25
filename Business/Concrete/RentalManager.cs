@@ -46,5 +46,10 @@ namespace Business.Concrete
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.RentalUpdated);
         }
+
+        public IDataResult<Rental> GetById(int rentalId)
+        {
+            return new SuccessDataResult<Rental>(_rentalDal.Get(p=> p.RentalId==rentalId));
+        }
     }
 }

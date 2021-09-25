@@ -1,4 +1,6 @@
 ﻿using Business.Abstracts;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concrete;
 using System;
@@ -16,43 +18,52 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             if (BrandNameControl(brand))
             {
                 _brandDal.Add(brand);
+                return new SuccessResult(Messages.BrandListed);
             }
             else
             {
-                Console.WriteLine("Error: Brand Name have to 2 Character than bigger");
+                return new ErrorResult(Messages.BrandNameCharacterCount);
             }
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            return new SuccessResult(Messages.BrandDeleted);
         }
 
-        public Brand GetById(int brandId)
+        public IDataResult<Brand> GetById(int brandId)
         {
-            return _brandDal.Get(p=>p.BrandId==brandId);
+            var result = _brandDal.Get(p=>p.BrandId==brandId);
+            return new SuccessDataResult<Brand>(result);
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             if (BrandNameControl(brand))
             {
                 _brandDal.Update(brand);
+                return new SuccessResult(Messages.BrandUpdated);
             }
             else
             {
-                Console.WriteLine("Error: Brand Name have to 2 Character than bigger");
+                return new ErrorResult(Messages.BrandNameCharacterCount);
             }
         }
 
         private static bool BrandNameControl(Brand brand)
         {
             return brand.BrandName.Length > 2;
+        }
+
+        public IDataResult<List<Brand>> GetAll()
+        {
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandListed);
         }
     }
 }

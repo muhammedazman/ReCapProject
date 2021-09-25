@@ -46,6 +46,10 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
+            if (DateTime.Now.Hour == 1)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
+            }
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
         }
 
@@ -80,6 +84,16 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+        }
+
+        public IDataResult<Car> GetById(int carId)
+        {
+            var result = _carDal.Get(p => p.CarId == carId);
+            if (result == null)
+            {
+                return new ErrorDataResult<Car>(result);
+            }
+            return new SuccessDataResult<Car>(result);
         }
     }
 }

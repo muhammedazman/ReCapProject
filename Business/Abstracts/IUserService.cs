@@ -10,6 +10,7 @@ namespace Business.Abstracts
     public interface IUserService
     {
         IDataResult<List<User>> GetAll();
+        IDataResult<User> GetById(int userId);
         IResult Add(User car);
         IResult Delete(User car);
         IResult Update(User car);
