@@ -32,7 +32,7 @@ namespace WebAPI
             //Autofact, Ninject, CastleWindsor, StructurMap, LightInject, DryInject --> IoC Container
             //AOP
             services.AddControllers();
-            
+          /*  
             //car
             services.AddSingleton<ICarService, CarManager>();
             services.AddSingleton<ICarDal, EfCarDal>();
@@ -56,6 +56,7 @@ namespace WebAPI
             //color
             services.AddSingleton<IColorService, ColorManager>();
             services.AddSingleton<IColorDal, EfColorDal>();
+          */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
