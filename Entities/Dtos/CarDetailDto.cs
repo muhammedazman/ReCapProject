@@ -10,6 +10,7 @@ namespace Entities.Dtos
         private decimal _dailyPriceFormat;
 
         public int CarId { get; set; }
+        public string CarName { get; set; }
         public string BrandName { get; set; }
         public string ColorName { get; set; }
         public short ModelYear { get; set; }

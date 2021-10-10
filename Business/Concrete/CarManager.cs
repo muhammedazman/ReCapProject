@@ -1,9 +1,13 @@
 ﻿using Business.Abstracts;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concrete;
 using Entities.Dtos;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,18 +23,11 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            if (DailyPriceControl(car))
-            {
-                _carDal.Add(car);
-                return new SuccessResult(Messages.CarAdded);
-            }
-            else
-            {
-                Console.WriteLine("ERROR: Daily Price have to 0 than bigger");
-                return new ErrorResult(Messages.CarInvalidDailyPrice);
-            }
+             _carDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
 
         private static bool DailyPriceControl(Car car)

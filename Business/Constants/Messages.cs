@@ -23,6 +23,7 @@ namespace Business.Constants
 
         // Error
         public static string CarInvalidDailyPrice = "Daily Price have to 0 than bigger";
+        public static string NameLenght2CharactersBigger = "Name length have to 2 characters than bigger";
         public static string InvalidProcess = "The Process is not success";
 
         // Users Success
